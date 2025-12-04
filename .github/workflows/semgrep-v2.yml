@@ -2,18 +2,18 @@ name: Reusable workflow for PRs
 
 on:
   workflow_call:
-    secrets:
-      token:
-        required: true
+   secrets:
+     token:
+       required: false
 
 permissions:
   contents: read
-
+ 
 jobs:
-  semgrep-placeholder:
-    name: Semgrep Placeholder
+  semgrep:
+    name: Scan
     runs-on: ubuntu-22.04
     if: (github.actor != 'dependabot[bot]' && !contains(github.event.pull_request.title, 'PR Canary'))
     steps:
-      - name: Print Placeholder Message
+      - name: Semgrep Placeholder
         run: echo "Semgrep Placeholder"
